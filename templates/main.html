@@ -2,38 +2,37 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 	<title>Brandon Duffany</title>
 	<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700" rel="stylesheet">
 	<link href="/static/css/main.css" rel="stylesheet" />
 	<link href="/static/css/main.desktop.css" rel="stylesheet"/>
-	<style>
-	  body {background-image: url('/static/img/bgpattern.png');}
-	  #header_wrap {background-image: url('/static/img/header_bg.jpg');}
-	  #navbar{background-image: url('/static/img/nav_pattern.png');}
-	  .editbutton {background-image: url('/static/img/edit.png');}
-	  .deletebutton {background-image: url('/static/img/delete.png');}
-	</style>
+
+	<script src="/static/vendor/polymer/platform/platform.js"></script>
+	<link rel="import" href="/static/vendor/polymer/font-roboto/roboto.html">
+	<link rel="import" href="/static/vendor/polymer/core-toolbar/core-toolbar.html">
+	<link rel="import" href="/static/vendor/polymer/paper-tabs/paper-tabs.html">
 </head>
-<body class="nojquery">
+
+<body unresolved touch-action="auto" class="nojquery">
+
 	<div id="wrap">
 	<div id="site_header">
 		<div id="header_wrap">
 		<div id="site_title">
-			<img id="logo_text" src="/static/img/logo_text_2.png" alt="Brandon Duffany" width="397" height="117"/>
+			<img id="logo_text" src="/static/img/name_4.png" alt="Brandon Duffany" width="376" height="29"/>
 		</div>
 	</div>
 	</div>
-
-	<div id="navbar">
-		<div id="nav_wrap">
-		<ul id="nav">
-			<li><a href="/#home">Home</a></li>
-			<li><a href="/#about">About</a></li>
-			<li><a href="/#contact">Contact</a></li>
-		</ul>
-	  </div>
-	</div>
+    
+    <div id="nav_spacer"></div>
+	<core-toolbar id="navbar">
+      <paper-tabs id="tabs" selected="all" self-end>
+        <paper-tab name="home">HOME</paper-tab>
+        <paper-tab name="about">ABOUT</paper-tab>
+        <paper-tab name="contact">CONTACT</paper-tab>
+      </paper-tabs>
+    </core-toolbar>
 
 	<div id="body_wrap">
 		<div id="site_body">
@@ -41,18 +40,26 @@
 				<!-- Content is dynamically loaded here. -->
 			</div>
 			<div id="footer" class="subtleglow">
-				<span id="copyright">&copy; 2013 Brandon Duffany</span>
+				<span id="copyright">&copy; 2013 Brandon Duffany.</span>
+				<span id="github">
+					<img src="/static/img/octocat-24.png" />
+					<span>
+						<a href="http://github.com/bduffany">bduffany</a> <span class="grayed">on Github</span>
+					</span>
+				</span>
 			</div>
 		</div>
 	</div>
 
 </div>
 
+
 <script src="/static/vendor/jquery-1.10.2.min.js"></script>
 <script src="/static/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="/static/vendor/jquery.transit.min.js"></script>
-<script src="/static/js/fx.js"></script>
+
 <script src="/static/js/nav.js"></script>
+<script src="/static/js/sticky_navbar.js"></script>
 
 </body>
 </html>

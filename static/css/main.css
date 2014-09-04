@@ -1,3 +1,9 @@
+/* IMAGES */
+
+body {background-image: url('/static/img/bgpattern.png');}
+#header_wrap {background-image: url('/static/img/header_bg.jpg');}
+#navbar{background-image: url('/static/img/nav_pattern.png');}
+
 /* LAYOUT */
 
 html {
@@ -120,6 +126,20 @@ ul.tags {
   float: left;
 }
 
+#github {
+  position: relative;
+}
+
+#github img {
+  position: absolute;
+  bottom: 0;
+}
+
+#github > span {
+  position: relative;
+  left: 30px;
+}
+
 #copyright {
   float: right;
 }
@@ -128,50 +148,53 @@ ul.tags {
   margin: 0 auto;
   background-position: center;
   background-color: white;
-  height: 179px;
+  height: 110px;
+}
+
+#tabs {
+  width: 600px;
+  margin: 0 auto;
+  height: 39px;
+  top: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#tabs::shadow #selectionBar {
+  background-color: white;
+}
+
+#tabs paper-tab::shadow #ink {
+  color: white;
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
 }
 
 #navbar {
+  position: absolute;
+  z-index: 100;
+  top: 110px;
   width: 100%;
   background-color: rgb(31, 28, 26);
   background-repeat: repeat-x;
   color: white;
 }
 
+#nav_spacer {
+  height: 39px;
+  width: 100%;
+}
+
 #site_title {
   margin: 0 auto;
   padding: 0;
   display: table;
-  padding-top: 28px;
-}
-
-#nav_wrap {
-  display: table;
-  height: 100%;
-  margin: 0 auto;
-}
-
-#nav {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-#nav li {
-  list-style-type: none;
-  display: inline;
-}
-
-#nav a, #nav a:visited {
-  text-align: right;
-  color: white;
-  text-decoration: none;
-}
-
-
-body.nojquery #nav a:hover {
-  background-color: white;
-  color: black;
+  padding-top: 40px;
 }
 
 .tags li {
