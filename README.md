@@ -1,4 +1,4 @@
-bduff.net-v2
+bduff_v2
 ============
 
-A more modern backend for my site.
+A more modern site, written in Python (using the [Flask](http://flask.pocoo.org/) framework).
