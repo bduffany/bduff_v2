@@ -2,24 +2,25 @@
 
 var MAIN_ID = '#maincontent',
     fancy = true,
-    first_load = true,
     /* Cache to store already loaded content */
     _cache = [],
-    cache_ignore = ['posts/create', ''];
+    cache_ignore = [];
+
+/* Get the hash of the page, or if the hash is empty, returns "home". */
+function get_effective_hash() {
+    var hash = window.location.hash.replace(/^#/, '');
+    if (!hash) {
+        hash = get_path();
+    }
+    if (!hash) {
+        hash = 'home'
+    }
+    return hash;
+}
 
 // When the hash changes, load a new page
 $(window).bind('hashchange', function() {
-    var hash = window.location.hash.replace(/^#/, '');
-    if (!hash) {
-        hash = remslash(window.location.pathname);
-    }
-    if (!hash) {
-    	hash = 'home'
-    }
-    if (first_load) {
-        first_load = false;
-    }
-    loadNewPage(hash);
+    loadNewPage(get_effective_hash());
 });
 
 /* Attempt to cache the specified content */
@@ -115,17 +116,16 @@ function initPage() {
     fadeDivsIn();
 }
 
-// Utility function to remove intro slashes from a string
-function remslash(str) {
-    return str.replace(/^\/+/, '');
-}
+// Tabs logic
+var tabs = document.querySelector('#tabs');
 
-var tabs = document.querySelector('paper-tabs');
 tabs.addEventListener('core-select', function(e) {
     if (e.detail.isSelected) {
-        loadNewPage(tabs.selected);
+        window.location.hash = '#' + tabs.selected;
     }
 });
 
-// Load the ajax content on first run of document
-$(window).trigger('hashchange');
+// Set initially selected tab equal to the effective hash.
+// This also triggers the hashchange event, causing initial
+// content to be loaded in the main div.
+tabs.setAttribute('selected', get_effective_hash());
