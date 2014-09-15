@@ -121,11 +121,12 @@ var tabs = document.querySelector('#tabs');
 
 tabs.addEventListener('core-select', function(e) {
     if (e.detail.isSelected) {
-        window.location.hash = '#' + tabs.selected;
+        var new_hash = '#' + tabs.selected;
+        if (new_hash == window.location.hash) {
+            window.location.hash = '#' + tabs.selected;
+            $(window).trigger('hashchange');
+        } else {
+            window.location.hash = '#' + tabs.selected;
+        }
     }
 });
-
-// Set initially selected tab equal to the effective hash.
-// This also triggers the hashchange event, causing initial
-// content to be loaded in the main div.
-tabs.setAttribute('selected', get_effective_hash());
