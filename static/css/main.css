@@ -156,6 +156,13 @@ ul.tags {
   min-height: 150px;
 }
 
+.smooth-transition-750 {
+  -webkit-transition: all 750ms cubic-bezier(0.080, 0.525, 0.315, 1.000); 
+     -moz-transition: all 750ms cubic-bezier(0.080, 0.525, 0.315, 1.000); 
+       -o-transition: all 750ms cubic-bezier(0.080, 0.525, 0.315, 1.000); 
+          transition: all 750ms cubic-bezier(0.080, 0.525, 0.315, 1.000); /* custom */
+}
+
 #tabs {
   width: 600px;
   margin: 0 auto;
@@ -189,7 +196,7 @@ paper-tab:hover {
   z-index: 100;
   top: 0px;
   width: 100%;
-  background-color: rgb(31, 28, 26);
+  background-color: rgb(0, 192, 249);
   background-repeat: repeat-x;
   color: white;
 }

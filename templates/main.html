@@ -4,7 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>Brandon Duffany</title>
-  <script src="/static/js/nav_head.js"></script>
+  <script>
+/* For http://foo.com/some/path#hash, returns "some/path". */
+function get_path() {
+    return window.location.pathname.replace(/^\/+/, '');
+}
+
+/* If the user accesses http://foo.com/bar, redirect them to
+ * http://foo.com/#bar. */
+if (get_path()) {
+    window.location = '/#' + get_path();
+}
+  </script>
 
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700" rel="stylesheet">
   <link href="/static/css/main.css" rel="stylesheet" />
@@ -48,7 +59,7 @@
         <span id="github">
           <img src="/static/img/octocat-24.png" />
           <span>
-            <a href="http://github.com/bduffany">bduffany</a> <span class="grayed">on Github</span>
+            <a href="http://github.com/bduffany">bduffany</a> <span class="grayed">on GitHub</span>
           </span>
         </span>
       </div>

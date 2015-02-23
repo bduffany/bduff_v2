@@ -2,8 +2,7 @@
 
 I'm a college student from Connecticut. Currently, I'm studying Computer Science at [Cornell University](http://cornell.edu) in Ithaca, New York.
 My interests in the field are quite varied, but I am most interested in software engineering and web development.
-
-I am also a huge fan of mathematics, robotics, and game design.
+I'm also a huge fan of mathematics, robotics, and game design.
 
 #### Computer Science
 
@@ -28,7 +27,7 @@ The back end is written entirely in Python, and makes good use of the [Flask](ht
 
 #### Robotics
 
-I have a fairly strong background in robotics. Presently, I am on the software subteam of the [Cornell Mars Rover](http://marsrover.engineering.cornell.edu)
+I have a fairly strong background in robotics. I am on the software subteam of the [Cornell Mars Rover](http://marsrover.engineering.cornell.edu)
 project team, where we program primarily in C++, and make good use of the [ROS](http://ros.org/) library. We do all of our development in Linux,
 so I have managed to gain a great deal of experience with Unix tools and Bash scripting.
 

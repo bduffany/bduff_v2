@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Brandon Duffany</title>
+  <script>
+/* For http://foo.com/some/path#hash, returns "some/path". */
+function get_path() {
+    return window.location.pathname.replace(/^\/+/, '');
+}
+
+/* If the user accesses http://foo.com/bar, redirect them to
+ * http://foo.com/#bar. */
+if (get_path()) {
+    window.location = '/#' + get_path();
+}
+  </script>
+
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700" rel="stylesheet">
+  <link href="/static/css/main.css" rel="stylesheet" />
+  <link href="/static/css/main.desktop.css" rel="stylesheet"/>
+
+  <script src="/static/vendor/polymer/platform/platform.js"></script>
+  <link rel="import" href="/static/vendor/polymer/font-roboto/roboto.html">
+  <link rel="import" href="/static/vendor/polymer/core-toolbar/core-toolbar.html">
+  <link rel="import" href="/static/vendor/polymer/paper-tabs/paper-tabs.html">
+</head>
+
+<body unresolved touch-action="auto" class="nojquery">
+<div id="wrap">
+
+  <div id="site_header">
+    <div id="header_wrap">
+    <div id="site_title">
+      <img id="logo_text" src="/static/img/name_4.png" alt="Brandon Duffany" width="376" height="29"/>
+    </div>
+  	</div>
+  </div>
+    
+  <div id="body_wrap">
+
+    <div id="nav_spacer"></div>
+    <core-toolbar id="navbar">
+      <paper-tabs id="tabs" self-end>
+        <paper-tab name="home">HOME</paper-tab>
+        <paper-tab name="about">ABOUT</paper-tab>
+        <paper-tab name="contact">CONTACT</paper-tab>
+      </paper-tabs>
+    </core-toolbar>
+
+  
+    <div id="site_body">
+      <div id="maincontent">
+        <!-- Content is dynamically loaded here. -->
+      </div>
+      <div id="footer" class="subtleglow">
+        <span id="copyright">&copy; 2013 Brandon Duffany.</span>
+        <span id="github">
+          <img src="/static/img/octocat-24.png" />
+          <span>
+            <a href="http://github.com/bduffany">bduffany</a> <span class="grayed">on Github</span>
+          </span>
+        </span>
+      </div>
+  	</div>
+
+  </div>
+
+</div>
+
+
+<script src="/static/vendor/jquery-1.10.2.min.js"></script>
+<script src="/static/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/static/vendor/jquery.transit.min.js"></script>
+
+<script src="/static/js/nav.js"></script>
+<script src="/static/js/sticky_navbar.js"></script>
+<script src="/static/js/sweet_animation.js"></script>
+
+</body>
+</html>

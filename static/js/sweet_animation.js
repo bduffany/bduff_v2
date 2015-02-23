@@ -6,32 +6,20 @@ $('#logo_text').css({
     'opacity': 0
 });
 
-// Reveal header
-$('#body_wrap').delay(750).animate(
-    {'margin-top': 0}, 
-    {
-        easing: 'easeOutQuint',
-        duration: 500,
-        done: function() {
-            // Set initially selected tab equal to the effective hash.
-            // This also triggers the hashchange event, causing initial
-            // content to be loaded in the main div.
-            tabs.setAttribute('selected', get_effective_hash());
-
-            reveal_header_text();
-        }
-    }
-)
-
 var reveal_header_text = function() {
-    $('#logo_text').animate(
+    $('#logo_text').toggleClass('smooth-transition-750').css(
         {
             'margin-top': 0,
             'opacity': 1
-        },
-        {
-            duration: 1600,
-            easing: 'easeOutQuint'
         }
     );
 }
+
+var slide_header_down = function() {
+    $('#body_wrap').toggleClass('smooth-transition-750').css({'margin-top': 0});
+    setTimeout(function() { tabs.setAttribute('selected', get_effective_hash()); }, 1000);
+    setTimeout(reveal_header_text, 200);
+}
+
+// Reveal header
+setTimeout(slide_header_down, 750);
