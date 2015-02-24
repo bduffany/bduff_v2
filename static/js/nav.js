@@ -116,17 +116,4 @@ function initPage() {
     fadeDivsIn();
 }
 
-// Tabs logic
-var tabs = document.querySelector('#tabs');
-
-tabs.addEventListener('core-select', function(e) {
-    if (e.detail.isSelected) {
-        var new_hash = '#' + tabs.selected;
-        if (new_hash == window.location.hash) {
-            window.location.hash = '#' + tabs.selected;
-            $(window).trigger('hashchange');
-        } else {
-            window.location.hash = '#' + tabs.selected;
-        }
-    }
-});
+$(window).trigger('hashchange');

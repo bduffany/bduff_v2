@@ -1,0 +1,130 @@
+<style>
+#_swirly_canv {
+  border: 1px solid black;
+  background-color: #f1f3f5;
+  cursor: pointer;
+}
+#_swirly_go {
+  display: inline-block;
+}
+#_swirly_reset_instr, #_swirly_controls {
+  min-height: 58px;
+}
+#_swirly_instr_wrap {
+  position: relative;
+  min-height: 58px;
+}
+#_swirly_instr_wrap > div {
+  position: absolute;
+  top: 0;
+}
+</style>
+
+<h1>Graphics Widget: Swirly</h1>
+<p>Here's a little graphics widget I coded up.</p>
+<div id="_swirly_instr_wrap">
+  <div id="_swirly_controls">
+    <p>Click the canvas below to place some points, then press 
+    <button id="_swirly_go">Go</button> !</p>
+  </div>
+  <div id="_swirly_reset_instr">
+    <p>(Click the canvas again to set new points.)</p>
+  </div>
+</div>
+<canvas id="_swirly_canv" width="560" height="420"></canvas>
+<script>(function() {
+
+var canvas = document.getElementById("_swirly_canv");
+var ctx = canvas.getContext("2d");
+
+$('#_swirly_reset_instr').fadeOut();
+
+document.getElementById("_swirly_go").onclick = begin;
+
+// Canvas mouse position
+function getMousePos(canv, evt) {
+  var rect = canv.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+
+var mousePos;
+canvas.addEventListener('mousemove', function(evt) {
+  mousePos = getMousePos(canvas, evt);
+}, false);
+
+var pts = [];
+var drawing = false;
+var interval;
+
+canvas.onclick = function() {
+  if (drawing) {
+    clearInterval(interval);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawing = false;
+    pts = [];
+    $('#_swirly_controls').fadeIn();
+    $('#_swirly_reset_instr').fadeOut();
+  }
+  pts.push({x : mousePos.x, y : mousePos.y});
+  ctx.beginPath();
+  ctx.arc(mousePos.x, mousePos.y, 3, 0, 2 * Math.PI, false);
+  ctx.fillStyle = 'black';
+  ctx.fill();
+}
+
+function begin() {
+  $('#_swirly_controls').fadeOut();
+  $('#_swirly_reset_instr').fadeIn();
+  var draw_iter = 0;
+  var num_iterations = 1000;
+  var start_sep_initial = 133;
+  var overshoot_initial = 12;
+
+  var start_sep = start_sep_initial;
+  var overshoot = overshoot_initial;
+  var center = {x : canvas.width/2, y : canvas.height/2};
+
+  /** Draws the swirly. */
+  function draw() {
+    drawing = true;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (!pts) {
+      pts = [
+        {x : center.x - 2 * start_sep, y : center.y - start_sep},
+        {x : center.x - start_sep, y : center.y + start_sep},
+        {x : center.x + 2 * start_sep, y : center.y + start_sep},
+        {x : center.x + start_sep, y : center.y - start_sep},
+        {x : 0, y : center.y - start_sep * 3}
+      ];
+    }
+
+    var pts_iter = $.extend(true, {}, pts);
+    var i = 1;
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    while (i < num_iterations) {
+      p1 = pts_iter[(i - 1) % pts.length];
+      p2 = pts_iter[i % pts.length];
+      v = {x : p2.x - p1.x, y : p2.y - p1.y};
+      v_mag = Math.sqrt(v.x * v.x + v.y * v.y);
+      v_hat = {x : v.x / v_mag, y : v.y / v_mag};
+      p3 = {x : p2.x + v_hat.x * overshoot, y : p2.y + v_hat.y * overshoot};
+      ctx.lineTo(p3.x, p3.y);
+      pts_iter[i % pts.length] = p3;
+      i++;
+    }
+    ctx.stroke();
+    draw_iter++;
+    overshoot = overshoot_initial + 5 * Math.sin(draw_iter/24);
+  }
+  // draw();
+  interval = setInterval(draw, 25);
+}
+
+})();</script>
