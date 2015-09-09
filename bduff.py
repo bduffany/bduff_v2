@@ -40,8 +40,6 @@ def render_content(section):
         content_list = [content_from_path(path) for path in config.HOME_CONTENT_ORDERED]  
     elif section == 'about':
         content_list = [content_from_path('posts/about.md')]
-    elif section == 'contact':
-        content_list = [content_from_path('posts/contact.md')]
     else:
         content_list = ["Hmm ... I couldn't find that page."]
 
