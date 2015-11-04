@@ -40,4 +40,6 @@ gulp.task('watch', function() {
     gulp.watch('static/css/*.scss', ['compass']);
 });
 
+gulp.task('build', ['compass']);
+
 gulp.task('default', ['lint', 'compass', /* 'scripts', */ 'watch']);
