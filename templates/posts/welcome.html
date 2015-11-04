@@ -1,3 +1,4 @@
 {% set fact = models['random_facts'].get_random_fact() %}
-<h1>Welcome!</h1>
-<p>Hey! My name's Brandon, and this is my site. Here, you can find out all sorts of things about me. For example: {{ fact|safe }}</p>
+<h1>Hey there!</h1>
+<p>My name's Brandon. I'm a fourth-year undergrad at <a href="//cornell.edu">Cornell</a> studying Computer Science. I'll be starting as a full-time software engineer at <a href="//google.com">Google</a> starting next summer.</p>
+<p>At this site, you can find out all sorts of things about me. Here's a random fact: {{ fact|safe }}</p>

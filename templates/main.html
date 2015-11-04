@@ -9,20 +9,61 @@
 function get_path() {
   return window.location.pathname.replace(/^\/+/, '');
 }
-
 /* If the user accesses http://foo.com/bar, redirect them to
  * http://foo.com/#bar. */
 if (get_path()) {
   window.location = '/#' + get_path();
 }
   </script>
+  <!-- Third-party JS -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700" rel="stylesheet">
+  <!-- Third-party styles -->
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700" rel="stylesheet">
+
+  <!-- Styles -->
   <link href="/static/css/main.css" rel="stylesheet" />
 </head>
 
 <body class="nojquery">
 <div id="wrap">
+
+  <div id="page-header">
+    <div id="site_title">
+      <a href="#" class="logo-link">
+      <div class="logo-text">
+        Brandon Duffany
+      </div>
+      </a>
+  	</div>
+    <div id="connect" class="subtleglow">
+      <div id="social-links">
+        <span>
+          <a href="//github.com/bduffany" target="_new">
+          <img src="/static/img/octocat-24-2.png" width="24" height="24" alt="GitHub"/>
+          </a>
+        </span>
+        <span>
+          <a href="//www.linkedin.com/profile/view?id=282468071" target="_new">
+          <img src="/static/img/linkedin-24.png" width="24" height="24" alt="Linkedin"/>
+          </a>
+        </span>
+        <span>
+          <a href="//www.facebook.com/brandon.duffany" target="_new">
+          <img src="/static/img/facebook-24.png" width="24" height="24" alt="facebook"/>
+          </a>
+        </span>
+        <span>
+          <a href="//soundcloud.com/brandonduffany" target="_new">
+          <img src="/static/img/soundcloud-24.png" width="24" height="24" alt="SoundCloud"/>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <div id="navbar">
     <ul id="nav-list">
@@ -30,40 +71,8 @@ if (get_path()) {
       <li><a href="#about">About</a></li>
     </ul>
   </div>
-  <div id="left-column">
-    <div id="site_title">
-      <a href="#">
-      <img id="logo_text" src="/static/img/name_5.png" alt="Brandon Duffany"
-           width="158" height="84"/>
-      </a>
-  	</div>
-    <div id="connect" class="subtleglow">
-      <div id="social-links">
-        <span>
-          <a href="http://github.com/bduffany" target="_new">
-          <img src="/static/img/octocat-24-2.png" width="24" height="24" alt="GitHub"/>
-          </a>    
-        </span>
-        <span>
-          <a href="https://www.linkedin.com/profile/view?id=282468071" target="_new">
-          <img src="/static/img/linkedin-24.png" width="24" height="24" alt="Linkedin"/>
-          </a>
-        </span>
-        <span>
-          <a href="https://www.facebook.com/brandon.duffany" target="_new">
-          <img src="/static/img/facebook-24.png" width="24" height="24" alt="facebook"/>
-          </a>
-        </span>
-        <span>
-          <a href="https://soundcloud.com/brandonduffany" target="_new">
-          <img src="/static/img/soundcloud-24.png" width="24" height="24" alt="SoundCloud"/>
-          </a>
-        </span>
-      </div>
-    </div>
-  </div>
-    
-  <div id="right-column">
+
+  <div id="page-main">
     <div id="site_body">
       <div id="maincontent">
         <!-- Content is dynamically loaded here. -->
@@ -75,10 +84,8 @@ if (get_path()) {
 </div>
 
 
-<script src="/static/vendor/jquery-1.10.2.min.js"></script>
 <script src="/static/vendor/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="/static/vendor/jquery.transit.min.js"></script>
-
 <script src="/static/js/nav.js"></script>
 
 </body>

@@ -14,7 +14,7 @@ $(window).scroll(function() {
             }, 'fast');
         } else {
             navbar.stop(true).css({
-                position: 'absolute', 
+                position: 'absolute',
                 top: 0
             }).animate({
                 opacity: 1.0

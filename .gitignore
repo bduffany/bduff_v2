@@ -1,6 +1,12 @@
 bower_components
 bower.json
+node_modules
 *.pyc
 Thumbs.db
 *~
 *.sublime-*
+
+# sass
+/static/css/*.css
+.sass-cache
+
